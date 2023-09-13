@@ -4,10 +4,10 @@ import main.GamePanel;
 import main.KeyHandler;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
-
-
 import javax.imageio.ImageIO;
+
 
 public class Player extends Entity{
     GamePanel gp;
@@ -29,19 +29,52 @@ public class Player extends Entity{
 
     public void getPlayerImage() {
         try {
-            up1 = ImageIO.read(getClass().getResourceAsStream("/entity/player/up1.png"));
-            up2 = ImageIO.read(getClass().getResourceAsStream("/entity/player/up2.png"));
-            down1 = ImageIO.read(getClass().getResourceAsStream("/entity/player/down1.png"));
-            down2 = ImageIO.read(getClass().getResourceAsStream("/entity/player/down2.png"));
-            left1 = ImageIO.read(getClass().getResourceAsStream("/entity/player/left1.png"));  
-            left2 = ImageIO.read(getClass().getResourceAsStream("/entity/player/left2.png"));
-            right1 = ImageIO.read(getClass().getResourceAsStream("/entity/player/right1.png"));
-            right2 = ImageIO.read(getClass().getResourceAsStream("/entity/player/right2.png"));
+            
+               
+            File imgFile = new File("/Users/Noah/Documents/GIT/Java_Game/Java_Game/src/resources/player/up_1.png");
+            if (!imgFile.exists()) {
+                System.out.println("Image file NOT FOUND at: " + imgFile.getAbsolutePath());}
+            else if (!imgFile.canRead()) {
+                System.out.println("No READ perms for file at: " + imgFile.getAbsolutePath());
+            } else {
+                System.out.println("Loading valid image file from: " + imgFile.getAbsolutePath());
+            }
 
-        } catch (IOException e) {
+            up1 = ImageIO.read(getClass().getClassLoader().getResourceAsStream("resources/player/up_1.png"));
+            up2 = ImageIO.read(getClass().getClassLoader().getResourceAsStream("resources/player/up_2.png"));
+            down1 = ImageIO.read(getClass().getClassLoader().getResourceAsStream("resources/player/down_1.png"));
+            down2 = ImageIO.read(getClass().getClassLoader().getResourceAsStream("resources/player/down_2.png"));
+            left1 = ImageIO.read(getClass().getClassLoader().getResourceAsStream("resources/player/left_1.png"));
+            left2 = ImageIO.read(getClass().getClassLoader().getResourceAsStream("resources/player/left_2.png"));
+            right1 = ImageIO.read(getClass().getClassLoader().getResourceAsStream("resources/player/right_1.png"));
+            right2 = ImageIO.read(getClass().getClassLoader().getResourceAsStream("resources/player/right_2.png"));
+            
+
+
+
+            /*
+            up1 = ImageIO.read(new File("/Users/Noah/Documents/GIT/Java_Game/Java_Game/resources/player/up_1.png"));
+            up2 = ImageIO.read(new File("/Users/Noah/Documents/GIT/Java_Game/Java_Game/resources/player/up_2.png"));
+            down1 = ImageIO.read(new File("/Users/Noah/Documents/GIT/Java_Game/Java_Game/resources/player/down_1.png"));
+            down2 = ImageIO.read(new File("/Users/Noah/Documents/GIT/Java_Game/Java_Game/resources/player/down_2.png"));
+            left1 = ImageIO.read(new File("/Users/Noah/Documents/GIT/Java_Game/Java_Game/resources/player/left_1.png"));
+            left2 = ImageIO.read(new File("/Users/Noah/Documents/GIT/Java_Game/Java_Game/resources/player/left_2.png"));
+            right1 = ImageIO.read(new File("/Users/Noah/Documents/GIT/Java_Game/Java_Game/resources/player/right_1.png"));
+            right2 = ImageIO.read(new File("/Users/Noah/Documents/GIT/Java_Game/Java_Game/resources/player/right_2.png"));
+            */
+            
+            
+ 
+
+            
+
+
+        } catch (IOException e) { 
             e.printStackTrace();
         }
     }
+
+    
 
     public void update() {
 
