@@ -3,14 +3,13 @@ package main;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-
-public class KeyHandler implements KeyListener{
+public class KeyHandler implements KeyListener {
 
     public boolean upPr, downPr, leftPr, rightPr;
 
     @Override
     public void keyTyped(KeyEvent e) {
-    
+
     }
 
     @Override
@@ -28,13 +27,13 @@ public class KeyHandler implements KeyListener{
             downPr = true;
         }
         if (code == KeyEvent.VK_D) {
-            rightPr = true;  
+            rightPr = true;
         }
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-     
+
         int code = e.getKeyCode();
 
         if (code == KeyEvent.VK_W) {
@@ -47,8 +46,8 @@ public class KeyHandler implements KeyListener{
             downPr = false;
         }
         if (code == KeyEvent.VK_D) {
-            rightPr = false;  
+            rightPr = false;
         }
     }
-    
+
 }
